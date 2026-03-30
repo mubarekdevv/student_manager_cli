@@ -45,4 +45,12 @@ void viewAdultStudents() {
   }
 }
 
-
+//Delete Student function
+void deleteStudent(String name) {
+  if (students.any((student) => student.name == name)) {
+    students.removeWhere((studdent) => studdent.name == name);
+    print("$name is deleted!");
+  } else {
+    print("Error: $name is not in the students list!");
+  }
+}
