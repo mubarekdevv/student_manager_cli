@@ -1,6 +1,6 @@
+import 'dart:io';
 
-
-class  Student {
+class Student {
   String? name;
   int? age;
 
@@ -9,6 +9,14 @@ class  Student {
 
 List<Student> students = [];
 
-void startApp(){
-  print("App started...");
+void startApp() {
+  print("App started!");
 }
+
+// add student function
+void addStudent(String name, int age) {
+  students.add(
+      Student(name, age)); // the student is cretaed and also added to the list
+  print("Student is added!");
+}
+
