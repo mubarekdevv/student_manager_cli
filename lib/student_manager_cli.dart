@@ -11,6 +11,35 @@ List<Student> students = [];
 
 void startApp() {
   print("App started!");
+  while (true) {
+    //print("----------------------");
+    print("\nEnter 1. to Add Student");
+    print("Enter 2. to View Students");
+    print("Enter 3. to Delete Student");
+    print("Enter 4. to Exit");
+    String choice = stdin.readLineSync()!;
+
+    if (choice == '1') {
+      stdout.write("Enter the name of the Student: ");
+      String name = stdin.readLineSync()!;
+      stdout.write("Enter the age of the student: ");
+      int age = int.parse(stdin.readLineSync()!);
+
+      addStudent(name, age);
+    } else if (choice == '2') {
+      viewStudents();
+    } else if (choice == '3') {
+      stdout.write("Enter the name of Student to be deleted: ");
+      String name = stdin.readLineSync()!;
+
+      deleteStudent(name);
+    } else if (choice == '4') {
+      print("Exiting...");
+      break;
+    } else {
+      print("Invalid choice!");
+    }
+  }
 }
 
 // add student function
