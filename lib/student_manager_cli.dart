@@ -12,7 +12,7 @@ class Student {
 
 List<Student> students = [];
 
-void startApp() {
+Future<void> startApp() async{
   print("App started!");
   while (true) {
     //print("----------------------");
@@ -43,6 +43,7 @@ void startApp() {
       print("Invalid choice!");
     }
   }
+  await loadStudents();
 }
 
 // add student function
@@ -64,12 +65,13 @@ void viewStudents() {
   for (Student student in students) {
     print("Name: ${student.name}, Age: ${student.age}");
   }
+
 }
 
-//for instance if we want to filter adult students over 20. Here is how you would print only the students who are older than 20
+//for instance if we want to filter adult students over 18. Here is how you would print only the students who are older than 20
 void viewAdultStudents() {
   // 1. Create a filtered version of the list
-  var adults = students.where((s) => s.age! > 20);
+  var adults = students.where((s) => s.age! > 18);
 
   // 2. Loop through ONLY those students
   for (var student in adults) {
@@ -90,5 +92,12 @@ void deleteStudent(String name) {
 enum StudentType {
   child,
   adult,
+}
+
+Future<void> loadStudents() async{
+  print("Loading students...");
+  Duration twoSeconds = Duration(seconds: 2);
+  Future.delayed(twoSeconds);
+  print("Student loaded!");
 }
 
