@@ -3,9 +3,12 @@ import 'dart:io';
 class Student {
   String? name;
   int? age;
+  StudentType type;
 
-  Student(this.name, this.age);
+  Student(this.name, this.age) 
+  : type = age! >= 18 ? StudentType.adult : StudentType.child;
 }
+
 
 List<Student> students = [];
 
@@ -83,3 +86,9 @@ void deleteStudent(String name) {
     print("Error: $name is not in the students list!");
   }
 }
+
+enum StudentType {
+  child,
+  adult,
+}
+
