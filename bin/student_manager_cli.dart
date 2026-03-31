@@ -1,8 +1,8 @@
 
 import 'package:student_manager_cli/student_manager_cli.dart';
 
-void main() {
-  startApp();
+void main() async{
+  await startApp();
   // addStudent("Mubarek", 23);
   // viewStudents();
   // addStudent("Tola", 30);
