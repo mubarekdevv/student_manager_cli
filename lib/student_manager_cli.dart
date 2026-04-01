@@ -44,7 +44,13 @@ Future<void> startApp() async{
 
       deleteStudent(name);
     } else if (choice == '4') {
-      print("Exiting...");
+      // await Future.delayed(Duration(seconds: 2));
+
+      stdout.write("Exiting");
+      for (int i = 0; i < 5; i++) {
+        await Future.delayed(Duration(milliseconds: 500));
+        stdout.write(".");
+      }
       break;
     } else {
       print("Invalid choice!");
@@ -55,10 +61,10 @@ Future<void> startApp() async{
 // add student function
 Future<void> addStudent(String name, int age) async {
   stdout.write("Saving to cloud...");
-    await Future.delayed(Duration(seconds: 1));
-    students.add(Student(
-        name, age)); // the student is cretaed and also added to the list
-    print("\nStudent $name is added!");
+  await Future.delayed(Duration(seconds: 1));
+  students.add(
+      Student(name, age)); // the student is cretaed and also added to the list
+  print("\nStudent $name is added!");
 }
 
 // View Students function
