@@ -13,6 +13,7 @@ class Student {
 List<Student> students = [];
 
 Future<void> startApp() async{
+  await loadStudents();
   print("App started!");
   while (true) {
     //print("----------------------");
@@ -43,14 +44,15 @@ Future<void> startApp() async{
       print("Invalid choice!");
     }
   }
-  await loadStudents();
 }
 
 // add student function
-void addStudent(String name, int age) {
+Future<void> addStudent(String name, int age) async {
+  stdout.write("Saving to cloud...");
+  Future.delayed(Duration(seconds: 1));
   students.add(
       Student(name, age)); // the student is cretaed and also added to the list
-  print("Student is added!");
+  print("\nStudent $name is added!");
 }
 
 // View Students function
@@ -95,9 +97,9 @@ enum StudentType {
 }
 
 Future<void> loadStudents() async{
-  print("Loading students...");
+  print("Loading database...");
   Duration twoSeconds = Duration(seconds: 2);
-  Future.delayed(twoSeconds);
-  print("Student loaded!");
+  await Future.delayed(twoSeconds);
+  print("✅ Students data synchronized!");
 }
 
