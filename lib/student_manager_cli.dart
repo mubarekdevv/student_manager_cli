@@ -24,12 +24,18 @@ Future<void> startApp() async{
     String choice = stdin.readLineSync()!;
 
     if (choice == '1') {
-      stdout.write("Enter the name of the Student: ");
-      String name = stdin.readLineSync()!;
-      stdout.write("Enter the age of the student: ");
-      int age = int.parse(stdin.readLineSync()!);
+      try {
+        stdout.write("Enter the name of the Student: ");
+        String name = stdin.readLineSync()!;
+        stdout.write("Enter the age of the student: ");
+        int age = int.parse(stdin.readLineSync()!);
 
-      addStudent(name, age);
+        await addStudent(name, age);
+      } catch (e) {
+        print("❌ Invalid input! Please enter a number for the age.");
+        print("The error was: $e");
+      }
+
     } else if (choice == '2') {
       viewStudents();
     } else if (choice == '3') {
@@ -49,10 +55,10 @@ Future<void> startApp() async{
 // add student function
 Future<void> addStudent(String name, int age) async {
   stdout.write("Saving to cloud...");
-  Future.delayed(Duration(seconds: 1));
-  students.add(
-      Student(name, age)); // the student is cretaed and also added to the list
-  print("\nStudent $name is added!");
+    await Future.delayed(Duration(seconds: 1));
+    students.add(Student(
+        name, age)); // the student is cretaed and also added to the list
+    print("\nStudent $name is added!");
 }
 
 // View Students function
