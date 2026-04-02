@@ -123,7 +123,6 @@ enum StudentType {
 }
 
 Future<void> loadStudents() async{
-  print("Loading database...");
   Duration twoSeconds = Duration(seconds: 2);
   await Future.delayed(twoSeconds);
   print("✅ Students data synchronized!");
