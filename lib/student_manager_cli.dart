@@ -103,6 +103,20 @@ void deleteStudent(String name) {
   }
 }
 
+//find student function for searcing student
+void findStudent(){
+  stdout.write("Enter the name to search for: ");
+  String target = stdin.readLineSync()!;
+  var results = students.where((s) => s.name!.toLowerCase().contains(target.toLowerCase()));
+  if (results.isEmpty) {
+    print("No sudent found with the name $target.");
+  } else{
+    print("\n Found ${results.length} match(es):");
+    for (var s in results){
+      print("Name: ${s.name}, Age: ${s.age}");
+    }
+  }
+}
 enum StudentType {
   child,
   adult,
