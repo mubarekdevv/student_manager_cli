@@ -20,7 +20,8 @@ Future<void> startApp() async{
     print("\nEnter 1. to Add Student");
     print("Enter 2. to View Students");
     print("Enter 3. to Delete Student");
-    print("Enter 4. to Exit");
+    print("Enter 4 to find student");
+    
     String choice = stdin.readLineSync()!;
 
     if (choice == '1') {
@@ -38,7 +39,10 @@ Future<void> startApp() async{
 
     } else if (choice == '2') {
       viewStudents();
-    } else if (choice == '3') {
+    } else if (choice=='4'){
+      findStudent();
+    }
+    else if (choice == '3') {
       stdout.write("Enter the name of Student to be deleted: ");
       String name = stdin.readLineSync()!;
 
