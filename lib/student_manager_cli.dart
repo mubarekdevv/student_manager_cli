@@ -21,7 +21,8 @@ Future<void> startApp() async{
     print("Enter 2. to View Students");
     print("Enter 3. to Delete Student");
     print("Enter 4 to find student");
-    
+    print("Enter 4. to Exit");
+
     String choice = stdin.readLineSync()!;
 
     if (choice == '1') {
