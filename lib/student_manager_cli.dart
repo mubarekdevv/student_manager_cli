@@ -5,14 +5,13 @@ class Student {
   int? age;
   StudentType type;
 
-  Student(this.name, this.age) 
-  : type = age! >= 18 ? StudentType.adult : StudentType.child;
+  Student(this.name, this.age)
+      : type = age! >= 18 ? StudentType.adult : StudentType.child;
 }
-
 
 List<Student> students = [];
 
-Future<void> startApp() async{
+Future<void> startApp() async {
   await loadStudents();
   print("App started!");
   while (true) {
@@ -21,7 +20,7 @@ Future<void> startApp() async{
     print("Enter 2. to View Students");
     print("Enter 3. to Delete Student");
     print("Enter 4 to find student");
-    print("Enter 4. to Exit");
+    print("Enter 5. to Exit");
 
     String choice = stdin.readLineSync()!;
 
@@ -37,18 +36,16 @@ Future<void> startApp() async{
         print("❌ Invalid input! Please enter a number for the age.");
         print("The error was: $e");
       }
-
     } else if (choice == '2') {
       viewStudents();
-    } else if (choice=='4'){
-      findStudent();
-    }
-    else if (choice == '3') {
+    } else if (choice == '3') {
       stdout.write("Enter the name of Student to be deleted: ");
       String name = stdin.readLineSync()!;
 
       deleteStudent(name);
     } else if (choice == '4') {
+      findStudent();
+    } else if (choice == '5') {
       // await Future.delayed(Duration(seconds: 2));
 
       stdout.write("Exiting");
@@ -84,7 +81,6 @@ void viewStudents() {
   for (Student student in students) {
     print("Name: ${student.name}, Age: ${student.age}");
   }
-
 }
 
 //for instance if we want to filter adult students over 18. Here is how you would print only the students who are older than 20
@@ -109,28 +105,29 @@ void deleteStudent(String name) {
 }
 
 //find student function for searcing student
-void findStudent(){
+void findStudent() {
   stdout.write("Enter the name to search for: ");
   String target = stdin.readLineSync()!;
-  var results = students.where((s) => s.name!.toLowerCase().contains(target.toLowerCase()));
+  var results = students
+      .where((s) => s.name!.toLowerCase().contains(target.toLowerCase()));
   if (results.isEmpty) {
     print("No sudent found with the name $target.");
-  } else{
+  } else {
     print("\n Found ${results.length} match(es):");
-    for (var s in results){
+    for (var s in results) {
       print("Name: ${s.name}, Age: ${s.age}");
     }
   }
 }
+
 enum StudentType {
   child,
   adult,
 }
 
-Future<void> loadStudents() async{
+Future<void> loadStudents() async {
   print("Database is Loading...");
   Duration twoSeconds = Duration(seconds: 2);
   await Future.delayed(twoSeconds);
   print("✅ Students data synchronized!");
 }
-
