@@ -16,11 +16,11 @@ Future<void> startApp() async {
   print("App started!");
   while (true) {
     //print("----------------------");
-    print("\nEnter 1. to Add Student");
-    print("Enter 2. to View Students");
-    print("Enter 3. to Delete Student");
-    print("Enter 4 to find student");
-    print("Enter 5. to Exit");
+    print("\nEnter 1. ➕ to Add Student");
+    print("Enter 2. 📋 to View Students");
+    print("Enter 3. 🗑️ to Delete Student");
+    print("Enter 4. 🔍 to find student");
+    print("Enter 5. 🚪 to Exit");
 
     String choice = stdin.readLineSync()!;
 
