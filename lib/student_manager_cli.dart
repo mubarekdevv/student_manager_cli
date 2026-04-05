@@ -120,10 +120,10 @@ void findStudent() {
   }
 }
 
-// enum StudentType {
-//   child,
-//   adult,
-// }
+enum StudentType {
+  child,
+  adult,
+}
 
 Future<void> loadStudents() async {
   print("Database is Loading...");
