@@ -90,7 +90,7 @@ void viewAdultStudents() {
 
   // 2. Loop through ONLY those students
   for (var student in adults) {
-    print("Adult student Found with Name: ${student.name} and Age: ${student.age}");
+    print("Adult student Found - Name: ${student.name}, Age: ${student.age}");
   }
 }
 
@@ -120,10 +120,10 @@ void findStudent() {
   }
 }
 
-enum StudentType {
-  child,
-  adult,
-}
+// enum StudentType {
+//   child,
+//   adult,
+// }
 
 Future<void> loadStudents() async {
   print("Database is Loading...");
